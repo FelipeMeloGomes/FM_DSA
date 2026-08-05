@@ -21,7 +21,7 @@ class DoublyLinkedList:
    
    def add_to_end(self, value):
        new_node = Node(value)
-       new_node.next = self.tail
+       new_node.prev = self.tail
        if self.tail:
             self.tail.next = new_node
        else:
@@ -47,9 +47,9 @@ class DoublyLinkedList:
                  return None
              
         removed_value = self.tail.value
-        self.tail = self.tail.next
+        self.tail = self.tail.prev
         if self.tail:
-                 self.tail.prev = None
+                 self.tail.next = None
         else:
                  self.head = None
         return removed_value

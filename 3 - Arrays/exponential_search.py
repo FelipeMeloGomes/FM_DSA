@@ -2,6 +2,8 @@ from binary_search import binary_search
 
 
 def exponential_search(arr, target):
+  if not arr:
+      return -1
   if arr[0] == target:
       return 0
   n = len(arr)
@@ -10,10 +12,10 @@ def exponential_search(arr, target):
   while i < n and arr[i] < target:
     i *= 2
 
-  if arr[i] == target:
+  if i < n and arr[i] == target:
     return i
 
-  return binary_search(arr, target, i//2,min(i,n-1))
+  return binary_search(arr, target, i//2, min(i, n))
 
 
 arr =  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
