@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class Node:
   def __init__(self, data) -> None:
     self.data = data
@@ -72,6 +75,25 @@ class BinaryTree:
          self._postorder_traversal(node.right, result)
          result.append(node.data)
 
+  def bfs(self, data):
+      if self.root is None:
+          return False
+
+      queue = deque()
+      queue.append(self.root)
+
+      while queue:
+          node = queue.popleft()
+          print(node.data)
+          if node.data == data:
+              return True
+          if node.left:
+              queue.append(node.left)
+          if node.right:
+              queue.append(node.right)
+
+      return False
+
 tree = BinaryTree()
 tree.insert(5)
 tree.insert(3)
@@ -79,6 +101,7 @@ tree.insert(1)
 tree.insert(10)
 tree.insert(15)
 tree.insert(7)
+tree.insert(20)
 
 # preorder trasversal[5,3,1,10,7,15]
 # inorder [1,3,5,7,10,15]
@@ -87,3 +110,4 @@ tree.insert(7)
 print("preorder trasversal:", tree.preorder_traversal())
 print("inorder trasversal:", tree.inorder_traversal())
 print("postorder trasversal:", tree.postorder_traversal())
+print("bfs:", tree.bfs(10))
