@@ -42,6 +42,24 @@ class BinaryTree:
      else:
         return self._search_recursive(node.right, data)
 
+
+  def dfs(self, data):
+        return self._dfs_recursive(self.root, data)
+   
+  def _dfs_recursive(self, node, data):
+        if node:
+            print(node.data)
+        if node is None:
+           return False
+        if node.data == data:
+           return True
+       
+        if self._dfs_recursive(node.left, data):
+           return True
+        
+        if self._dfs_recursive(node.right, data):
+           return True
+
   def preorder_traversal(self):
         result = []
         self._preorder_recursive(self.root, result)
@@ -111,3 +129,4 @@ print("preorder trasversal:", tree.preorder_traversal())
 print("inorder trasversal:", tree.inorder_traversal())
 print("postorder trasversal:", tree.postorder_traversal())
 print("bfs:", tree.bfs(10))
+print("dfs:", tree.dfs(20))
